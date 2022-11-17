@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -9,8 +10,14 @@ public class Main {
 
         while(check){
             System.out.println("Enter choice : ");
-            int choice = input.nextInt();
-            input.nextLine();
+            int choice = 0;
+            try{
+                choice = input.nextInt();
+                input.nextLine();
+            }catch (InputMismatchException e){
+                System.out.println("Please enter number only!!");
+                input.nextLine();
+            }
             switch (choice){
                 case 0 -> choiceList();
                 case 1 -> groceryList.printItems();
